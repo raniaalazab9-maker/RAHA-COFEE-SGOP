@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>راحة كوفي شوب | Raha Coffee Shop - جرش</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --dark:#2B1B12;
+  --brown:#6F4E37;
+  --caramel:#A67C52;
+  --gold:#D4A574;
+  --cream:#F5E6D3;
+  --warm:#FFF8F0;
+  --white:#FFFFFF;
+  --text:#3C2415;
+  --muted:#8B6F55;
+  --shadow:0 10px 40px rgba(60,36,21,0.12);
+  --shadow-lg:0 20px 60px rgba(60,36,21,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',sans-serif;background:var(--warm);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:'Tajawal',sans-serif;cursor:pointer;border:none;outline:none}
+
+/* Header */
+.header{position:fixed;top:0;right:0;left:0;z-index:1000;background:rgba(255,248,240,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(111,78,55,0.08);transition:all .3s}
+.header.scrolled{background:rgba(255,255,255,0.98);box-shadow:0 4px 30px rgba(0,0,0,0.06)}
+.nav{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:48px;height:48px;background:linear-gradient(135deg,var(--dark),var(--brown));border-radius:14px;display:grid;place-items:center;color:var(--gold);font-size:22px;box-shadow:0 6px 20px rgba(43,27,18,0.25)}
+.logo-text h1{font-family:'Amiri',serif;font-size:26px;font-weight:800;color:var(--dark);line-height:1}
+.logo-text span{font-size:11px;letter-spacing:2px;color:var(--caramel);font-weight:700}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:15px;font-weight:600;color:var(--text);position:relative;transition:.3s}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;right:0;width:0;height:2px;background:var(--gold);transition:.3s;border-radius:2px}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-order{background:linear-gradient(135deg,var(--brown),var(--dark));color:white;padding:11px 22px;border-radius:30px;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;box-shadow:0 8px 20px rgba(111,78,55,0.25);transition:.3s}
+.btn-order:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(111,78,55,0.35)}
+.cart-btn{position:relative;width:44px;height:44px;background:white;border:1px solid rgba(111,78,55,0.12);border-radius:50%;display:grid;place-items:center;font-size:18px;color:var(--brown);transition:.3s}
+.cart-btn:hover{background:var(--cream)}
+.cart-count{position:absolute;top:-6px;left:-6px;background:#C0392B;color:white;font-size:11px;font-weight:800;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;border:2px solid white}
+.theme-btn{width:44px;height:44px;background:white;border:1px solid rgba(0,0,0,0.06);border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.hamburger{display:none;width:44px;height:44px;background:var(--dark);color:white;border-radius:12px;font-size:18px}
+
+/* Hero */
+.hero{padding:140px 0 80px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;padding-left:24px;padding-right:24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle, rgba(212,165,116,0.18) 0%, transparent 70%);top:-100px;left:-100px;pointer-events:none}
+.hero-text{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:8px;background:white;border:1px solid rgba(212,165,116,0.3);padding:8px 16px;border-radius:30px;font-size:13px;font-weight:700;color:var(--brown);box-shadow:var(--shadow);margin-bottom:20px}
+.badge i{color:var(--gold)}
+.hero h2{font-size:56px;font-weight:900;line-height:1.1;color:var(--dark);margin-bottom:16px}
+.hero h2 span{color:var(--brown);position:relative}
+.hero h2 span::after{content:'';position:absolute;bottom:8px;right:0;width:100%;height:10px;background:rgba(212,165,116,0.3);z-index:-1;border-radius:4px}
+.hero p{font-size:18px;color:var(--muted);margin-bottom:32px;max-width:520px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{background:var(--dark);color:white;padding:16px 30px;border-radius:30px;font-weight:800;font-size:16px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(43,27,18,0.25);transition:.3s}
+.btn-primary:hover{transform:translateY(-3px);background:var(--brown)}
+.btn-secondary{background:white;color:var(--dark);padding:16px 28px;border-radius:30px;font-weight:800;font-size:16px;border:1.5px solid rgba(60,36,21,0.1);display:flex;align-items:center;gap:10px;transition:.3s}
+.btn-secondary:hover{background:var(--cream)}
+.hero-stats{display:flex;gap:24px}
+.stat{display:flex;align-items:center;gap:12px;background:white;padding:12px 18px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
+.stat-icon{width:42px;height:42px;background:var(--cream);border-radius:12px;display:grid;place-items:center;color:var(--brown)}
+.stat b{font-size:18px;color:var(--dark);display:block;line-height:1}
+.stat small{font-size:12px;color:var(--muted);font-weight:600}
+
+/* Hero Visual */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.coffee-wrap{position:relative;width:420px;height:420px}
+.coffee-bg{position:absolute;inset:0;background:linear-gradient(135deg,#f8e8d0 0%, #e8c9a0 100%);border-radius:40px;transform:rotate(-3deg)}
+.coffee-card{position:absolute;inset:18px;background:white;border-radius:32px;overflow:hidden;box-shadow:var(--shadow-lg);display:flex;flex-direction:column}
+.coffee-img{height:260px;position:relative;overflow:hidden;background:linear-gradient(180deg,#3C2415 0%, #6F4E37 100%);display:grid;place-items:center}
+.coffee-img img{width:100%;height:100%;object-fit:cover;opacity:0.92}
+.steam{position:absolute;top:30px;left:50%;transform:translateX(-50%);display:flex;gap:12px}
+.steam span{width:3px;height:40px;background:linear-gradient(to top, rgba(255,255,255,0.7), transparent);border-radius:10px;animation:steam 2.5s infinite ease-in-out}
+.steam span:nth-child(2){animation-delay:.4s;height:55px}
+.steam span:nth-child(3){animation-delay:.8s;height:35px}
+@keyframes steam{0%{transform:translateY(0) scaleY(1);opacity:.7}50%{transform:translateY(-20px) scaleY(1.2);opacity:.4}100%{transform:translateY(-40px) scaleY(0.8);opacity:0}}
+.coffee-info{padding:18px 20px;flex:1}
+.coffee-info h3{font-size:18px;font-weight:800;color:var(--dark)}
+.coffee-info p{font-size:13px;color:var(--muted);margin:6px 0 12px}
+.price-row{display:flex;justify-content:space-between;align-items:center}
+.price{font-size:20px;font-weight:900;color:var(--brown)} .price small{font-size:13px;color:var(--muted);font-weight:600}
+.add-mini{width:40px;height:40px;background:var(--dark);color:white;border-radius:50%;display:grid;place-items:center;transition:.3s}
+.add-mini:hover{background:var(--brown);transform:scale(1.08)}
+.float-card{position:absolute;background:white;padding:12px 16px;border-radius:16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;border:1px solid rgba(0,0,0,0.04);animation:float 3s ease-in-out infinite}
+.float-card.top{top:10px;right:-20px}
+.float-card.bottom{bottom:40px;left:-30px;animation-delay:1s}
+.float-card .icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:white}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* Sections */
+.section{max-width:1280px;margin:0 auto;padding:70px 24px}
+.section-head{text-align:center;margin-bottom:44px}
+.section-head h2{font-size:38px;font-weight:900;color:var(--dark)}
+.section-head h2 em{font-style:normal;color:var(--brown)}
+.section-head p{color:var(--muted);margin-top:10px;max-width:560px;margin-left:auto;margin-right:auto}
+.divider{width:60px;height:4px;background:linear-gradient(90deg,var(--gold),var(--caramel));border-radius:10px;margin:14px auto}
+
+/* Features */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feat{background:white;border-radius:24px;padding:32px 26px;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04);transition:.4s;position:relative;overflow:hidden}
+.feat::before{content:'';position:absolute;top:0;right:0;left:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--caramel));opacity:0;transition:.3s}
+.feat:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.feat:hover::before{opacity:1}
+.feat-icon{width:64px;height:64px;margin:0 auto 18px;background:var(--cream);border-radius:18px;display:grid;place-items:center;font-size:26px;color:var(--brown);transition:.3s}
+.feat:hover .feat-icon{background:var(--dark);color:var(--gold);transform:rotate(6deg) scale(1.05)}
+.feat h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.feat p{font-size:14px;color:var(--muted);line-height:1.8}
+
+/* Menu */
+.menu-wrap{background:white;border-radius:32px;padding:36px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
+.menu-controls{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.filter{padding:10px 20px;border-radius:30px;font-weight:700;font-size:14px;background:var(--warm);color:var(--muted);border:1.5px solid transparent;transition:.3s}
+.filter.active{background:var(--dark);color:white;box-shadow:0 6px 18px rgba(43,27,18,0.2)}
+.search{position:relative;min-width:260px;flex:1;max-width:360px}
+.search input{width:100%;padding:12px 44px 12px 16px;border-radius:30px;border:1.5px solid rgba(60,36,21,0.1);background:var(--warm);font-family:'Tajawal';font-size:14px;outline:none;transition:.3s}
+.search input:focus{border-color:var(--gold);background:white}
+.search i{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--warm);border-radius:24px;overflow:hidden;border:1px solid rgba(0,0,0,0.04);transition:.35s;cursor:pointer}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);background:white}
+.card-img{height:200px;overflow:hidden;position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.card:hover .card-img img{transform:scale(1.08)}
+.badge-cat{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800;color:var(--brown);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+.card-body{padding:18px}
+.card-body h3{font-size:16px;font-weight:800;color:var(--dark);margin-bottom:6px}
+.card-body p{font-size:13px;color:var(--muted);line-height:1.6;min-height:36px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.card-foot .price{font-size:18px}
+.qty{display:flex;align-items:center;gap:8px;background:white;border:1px solid rgba(0,0,0,0.06);padding:6px;border-radius:30px}
+.qty button{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--dark);color:white;font-size:12px;transition:.2s}
+.qty button:hover{background:var(--brown)}
+.qty span{font-weight:800;min-width:18px;text-align:center;font-size:14px}
+
+/* Story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:linear-gradient(135deg,var(--dark) 0%, #4A2C17 100%);border-radius:32px;padding:50px;color:white;position:relative;overflow:hidden}
+.story::after{content:'☕';position:absolute;left:-20px;bottom:-40px;font-size:200px;opacity:0.06;transform:rotate(-15deg)}
+.story-img{border-radius:24px;overflow:hidden;height:420px;position:relative;box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-badge{position:absolute;bottom:16px;right:16px;background:white;color:var(--dark);padding:14px 18px;border-radius:16px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-lg)}
+.story-badge b{font-size:22px;line-height:1}
+.story-text h3{font-size:32px;font-weight:900;margin-bottom:14px;line-height:1.3}
+.story-text h3 span{color:var(--gold)}
+.story-text p{color:rgba(255,255,255,0.85);line-height:1.9;margin-bottom:20px}
+.counters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+.counter{background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:18px;text-align:center}
+.counter b{font-size:28px;color:var(--gold);display:block}
+.counter span{font-size:13px;color:rgba(255,255,255,0.8);font-weight:600}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.gallery-item{border-radius:20px;overflow:hidden;height:260px;position:relative;cursor:pointer;box-shadow:var(--shadow)}
+.gallery-item:nth-child(2){height:320px}
+.gallery-item:nth-child(4){height:320px;margin-top:-60px}
+.gallery-item:nth-child(5){margin-top:-0px}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.45), transparent);opacity:0;transition:.3s;display:flex;align-items:flex-end;padding:16px;color:white;font-weight:700}
+.gallery-item:hover .gallery-overlay{opacity:1}
+
+/* Reviews */
+.reviews{position:relative}
+.review-track{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{background:white;border-radius:24px;padding:28px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04);position:relative}
+.review::before{content:'“';position:absolute;top:10px;left:18px;font-size:60px;color:var(--cream);font-family:'Amiri',serif;line-height:1}
+.stars{color:#FFB800;display:flex;gap:3px;margin-bottom:12px}
+.review p{font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:16px;position:relative;z-index:1}
+.reviewer{display:flex;align-items:center;gap:12px}
+.reviewer img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.reviewer b{font-size:14px}
+.reviewer small{font-size:12px;color:var(--muted)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:24px}
+.map-card{background:white;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
+.map-card iframe{width:100%;height:340px;border:0;filter:grayscale(0.2) contrast(1.05)}
+.map-info{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.info{display:flex;gap:12px;align-items:flex-start}
+.info i{width:40px;height:40px;background:var(--cream);border-radius:12px;display:grid;place-items:center;color:var(--brown);flex-shrink:0}
+.info b{font-size:14px;display:block}
+.info span{font-size:13px;color:var(--muted)}
+.contact-form{background:white;border-radius:24px;padding:28px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,0.04)}
+.contact-form h3{font-size:20px;font-weight:800;margin-bottom:6px}
+.contact-form p{font-size:13px;color:var(--muted);margin-bottom:18px}
+.field{margin-bottom:14px}
+.field label{font-size:13px;font-weight:700;color:var(--dark);display:block;margin-bottom:6px}
+.field input,.field textarea{width:100%;padding:12px 16px;border-radius:14px;border:1.5px solid rgba(60,36,21,0.1);background:var(--warm);font-family:'Tajawal';font-size:14px;outline:none;transition:.3s}
+.field input:focus,.field textarea:focus{border-color:var(--gold);background:white}
+.field textarea{min-height:90px;resize:none}
+.btn-send{width:100%;background:var(--dark);color:white;padding:14px;border-radius:14px;font-weight:800;font-size:15px;transition:.3s;display:flex;justify-content:center;gap:8px;align-items:center}
+.btn-send:hover{background:var(--brown)}
+.socials{display:flex;gap:10px;margin-top:16px}
+.socials a{width:42px;height:42px;background:var(--warm);border-radius:50%;display:grid;place-items:center;color:var(--brown);border:1px solid rgba(0,0,0,0.04);transition:.3s}
+.socials a:hover{background:var(--dark);color:white;transform:translateY(-3px)}
+
+/* Footer */
+footer{margin-top:60px;background:var(--dark);color:white;padding:50px 24px 24px}
+.footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:30px}
+.footer-inner h4{font-size:16px;font-weight:800;margin-bottom:16px;color:var(--gold)}
+.footer-inner p,.footer-inner a{font-size:13px;color:rgba(255,255,255,0.75);line-height:1.9}
+.footer-inner a:hover{color:var(--gold)}
+.footer-bottom{max-width:1280px;margin:24px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(255,255,255,0.6)}
+
+/* Drawer & Modal */
+.overlay{position:fixed;inset:0;background:rgba(20,10,5,0.45);backdrop-filter:blur(4px);z-index:1200;opacity:0;pointer-events:none;transition:.3s}
+.overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;left:0;bottom:0;width:420px;max-width:92vw;background:var(--warm);z-index:1300;transform:translateX(-100%);transition:.4s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(0,0,0,0.2)}
+.drawer.open{transform:translateX(0)}
+.drawer-head{padding:22px;background:white;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(0,0,0,0.06)}
+.drawer-head h3{font-size:18px;font-weight:800}
+.close{width:36px;height:36px;background:var(--warm);border-radius:50%;display:grid;place-items:center}
+.cart-items{flex:1;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.cart-item{background:white;border-radius:16px;padding:12px;display:flex;gap:12px;align-items:center;box-shadow:0 4px 16px rgba(0,0,0,0.04)}
+.cart-item img{width:64px;height:64px;border-radius:12px;object-fit:cover}
+.cart-item h4{font-size:14px;font-weight:800}
+.cart-item small{font-size:12px;color:var(--muted)}
+.cart-actions{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cart-actions button{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--warm);border:1px solid rgba(0,0,0,0.06);font-size:11px}
+.remove{margin-right:auto;color:#C0392B;background:none!important;border:none!important;font-size:18px}
+.drawer-foot{padding:18px;background:white;border-top:1px solid rgba(0,0,0,0.06)}
+.total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-weight:800;font-size:18px}
+.btn-whatsapp{width:100%;background:#25D366;color:white;padding:14px;border-radius:14px;font-weight:800;display:flex;justify-content:center;gap:8px;align-items:center;box-shadow:0 8px 20px rgba(37,211,102,0.3)}
+.empty{text-align:center;padding:40px 20px;color:var(--muted)}
+.empty i{font-size:40px;margin-bottom:12px;color:var(--gold);display:block}
+
+.modal{position:fixed;inset:0;z-index:1400;display:grid;place-items:center;padding:20px;opacity:0;pointer-events:none;transition:.3s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-box{background:white;border-radius:24px;max-width:560px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);transform:translateY(20px) scale(0.98);transition:.4s}
+.modal.open .modal-box{transform:none}
+.modal-img{height:240px;position:relative;overflow:hidden}
+.modal-img img{width:100%;height:100%;object-fit:cover}
+.modal-close{position:absolute;top:14px;left:14px;width:36px;height:36px;background:rgba(255,255,255,0.9);border-radius:50%;display:grid;place-items:center;backdrop-filter:blur(8px)}
+.modal-body{padding:22px}
+.options{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.opt{padding:8px 16px;border-radius:30px;background:var(--warm);border:1.5px solid transparent;font-weight:700;font-size:13px;transition:.2s}
+.opt.active{background:var(--dark);color:white}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1500;display:grid;place-items:center;padding:30px;opacity:0;pointer-events:none;transition:.3s}
+.lightbox.open{opacity:1;pointer-events:auto}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+
+/* Toast */
+.toasts{position:fixed;bottom:20px;right:20px;z-index:1600;display:flex;flex-direction:column;gap:10px}
+.toast{background:var(--dark);color:white;padding:14px 18px;border-radius:14px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,0.2);animation:slideIn .4s ease;min-width:280px}
+.toast i{width:32px;height:32px;background:rgba(255,255,255,0.12);border-radius:50%;display:grid;place-items:center;color:var(--gold)}
+@keyframes slideIn{from{transform:translateX(20px);opacity:0}to{transform:none;opacity:1}}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:.7s}
+.reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;gap:30px;padding-top:120px}
+  .hero-visual{order:-1}
+  .coffee-wrap{width:360px;height:380px}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .features{grid-template-columns:1fr 1fr}
+  .story{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery-item:nth-child(4){margin-top:0}
+  .review-track{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links,.nav-actions .btn-order,.theme-btn{display:none}
+  .hamburger{display:grid}
+  .hero h2{font-size:36px}
+  .hero-btns{flex-direction:column}
+  .hero-stats{flex-direction:column}
+  .products{grid-template-columns:1fr}
+  .features{grid-template-columns:1fr}
+  .review-track{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .gallery-item,.gallery-item:nth-child(2),.gallery-item:nth-child(4){height:250px;margin-top:0}
+  .counters{grid-template-columns:1fr}
+  .map-info{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <nav class="nav">
+    <div class="logo">
+      <div class="logo-icon"><i class="fa-solid fa-mug-hot"></i></div>
+      <div class="logo-text"><h1>راحة</h1><span>RAHA COFFEE • JERASH</span></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" class="active">الرئيسية</a></li>
+      <li><a href="#story">قصتنا</a></li>
+      <li><a href="#menu">المنيو</a></li>
+      <li><a href="#gallery">المعرض</a></li>
+      <li><a href="#reviews">آراء الزبائن</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-btn" id="themeBtn" title="الوضع"><i class="fa-regular fa-moon"></i></button>
+      <button class="cart-btn" id="cartBtn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count" id="cartCount">0</span></button>
+      <a href="#menu" class="btn-order"><i class="fa-solid fa-leaf"></i> اطلب الآن</a>
+      <button class="hamburger" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="badge"><i class="fa-solid fa-star"></i> أهلاً بك في قلب جرش • تقييم 4.9 من 2,400 زبون</div>
+    <h2>راحتك تبدأ<br><span>مع أول رشفة</span></h2>
+    <p>في راحة كوفي شوب، نمزج حبوب القهوة الفاخرة مع دفء الضيافة الأردنية. كل فنجان يُحضّر بإتقان ليمنحك لحظة هدوء تستحقها.</p>
+    <div class="hero-btns">
+      <a href="#menu" class="btn-primary">استكشف المنيو <i class="fa-solid fa-arrow-left"></i></a>
+      <a href="https://wa.me/962791234567" target="_blank" class="btn-secondary"><i class="fa-brands fa-whatsapp" style="color:#25D366"></i> تواصل واتساب</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-icon"><i class="fa-solid fa-clock"></i></div><div><b>8ص - 12م</b><small>يومياً - جرش، وسط البلد</small></div></div>
+      <div class="stat"><div class="stat-icon"><i class="fa-solid fa-fire"></i></div><div><b>+50 مشروب</b><small>ساخن وبارد ومخبوزات</small></div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="coffee-wrap">
+      <div class="coffee-bg"></div>
+      <div class="coffee-card">
+        <div class="coffee-img">
+          <div class="steam"><span></span><span></span><span></span></div>
+          <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80&auto=format&fit=crop" alt="قهوة">
+        </div>
+        <div class="coffee-info">
+          <h3>لاتيه راحة المميز</h3>
+          <p>إسبريسو غني مع حليب مخملي ولمسة فانيليا</p>
+          <div class="price-row"><div class="price">3.50 <small>د.أ</small></div><button class="add-mini" onclick="quickAdd(1)"><i class="fa-solid fa-plus"></i></button></div>
+        </div>
+      </div>
+      <div class="float-card top"><div class="icon" style="background:#25D366"><i class="fa-solid fa-motorcycle"></i></div><div><b style="font-size:13px">توصيل سريع</b><small style="display:block;color:var(--muted);font-size:11px">خلال 25 دقيقة لجرش</small></div></div>
+      <div class="float-card bottom"><div class="icon" style="background:var(--gold)"><i class="fa-solid fa-award"></i></div><div><b style="font-size:13px">الأكثر طلباً ⭐ 4.9</b><small style="display:block;color:var(--muted);font-size:11px">آيس كراميل لاتيه</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="features">
+    <div class="feat reveal"><div class="feat-icon"><i class="fa-solid fa-seedling"></i></div><h3>حبوب مختارة بعناية</h3><p>نستورد أجود حبوب الأرابيكا المحمصة طازجة أسبوعياً لنضمن نكهة غنية متوازنة.</p></div>
+    <div class="feat reveal"><div class="feat-icon"><i class="fa-solid fa-hand-sparkles"></i></div><h3>تحضير بإتقان</h3><p>باريستا محترفون يحضّرون كل مشروب بحب ودقة أمام عينيك.</p></div>
+    <div class="feat reveal"><div class="feat-icon"><i class="fa-solid fa-heart"></i></div><h3>أجواء جرش الأصيلة</h3><p>ديكور دافئ، موسيقى هادئة، وزاوية قراءة تمنحك راحة حقيقية في وسط المدينة.</p></div>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="section-head reveal">
+    <h2>منيو <em>راحة</em></h2><div class="divider"></div>
+    <p>اختر من تشكيلة واسعة من المشروبات الساخنة والباردة والمخبوزات الطازجة يومياً</p>
+  </div>
+  <div class="menu-wrap reveal">
+    <div class="menu-controls">
+      <div class="filters">
+        <button class="filter active" data-filter="all">الكل</button>
+        <button class="filter" data-filter="hot">☕ ساخن</button>
+        <button class="filter" data-filter="cold">🧊 بارد</button>
+        <button class="filter" data-filter="bakery">🥐 مخبوزات</button>
+      </div>
+      <label class="search"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="ابحث عن مشروبك المفضل..."></label>
+    </div>
+    <div class="products" id="products"></div>
+  </div>
+</section>
+
+<section class="section" id="story">
+  <div class="story reveal">
+    <div class="story-img">
+      <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=900&q=80&auto=format&fit=crop" alt="قصة راحة">
+      <div class="story-badge"><div style="width:44px;height:44px;background:var(--cream);border-radius:12px;display:grid;place-items:center;color:var(--brown)"><i class="fa-solid fa-location-dot"></i></div><div><b>جرش</b><small style="display:block;color:var(--muted);font-size:12px">منذ 2019</small></div></div>
+    </div>
+    <div class="story-text">
+      <span style="background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px">قصتنا — OUR STORY</span>
+      <h3>من قلب جرش،<br><span>حكاية قهوة ودفء</span></h3>
+      <p>بدأت راحة كفكرة بسيطة: مكان يشعر فيه الزائر أنه في بيته. اليوم أصبحنا وجهة عشاق القهوة في جرش، نجمع بين أصالة المدينة العريقة وحداثة عالم القهوة المختصة. كل زاوية في المقهى صُممت لتمنحك لحظة راحة حقيقية.</p>
+      <p style="opacity:0.9;font-size:14px">نفخر بشراكتنا مع مزارع قهوة مستدامة، ونلتزم بتقديم تجربة لا تُنسى مع كل زيارة.</p>
+      <div class="counters">
+        <div class="counter"><b data-count="4200">0</b><span>زبون سعيد</span></div>
+        <div class="counter"><b data-count="58">0</b><span>مشروب مميز</span></div>
+        <div class="counter"><b data-count="6">0</b><span>سنوات من العطاء</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="section-head reveal"><h2>لحظات <em>من راحة</em></h2><div class="divider"></div><p>أجواء دافئة وتفاصيل تصنع يومك</p></div>
+  <div class="gallery reveal" id="galleryGrid">
+    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop"><div class="gallery-overlay">ركن القراءة الهادئ</div></div>
+    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80&auto=format&fit=crop"><div class="gallery-overlay">تحضير بإتقان</div></div>
+    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800&q=80&auto=format&fit=crop"><div class="gallery-overlay">جلسات خارجية</div></div>
+    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80&auto=format&fit=crop"><div class="gallery-overlay">لاتيه آرت</div></div>
+    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=80&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?w=800&q=80&auto=format&fit=crop"><div class="gallery-overlay">مخبوزات طازجة</div></div>
+    <div class="gallery-item" data-src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80&auto=format&fit=crop"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800&q=80&auto=format&fit=crop"><div class="gallery-overlay">أمسية دافئة</div></div>
+  </div>
+</section>
+
+<section class="section reviews" id="reviews">
+  <div class="section-head reveal"><h2>ماذا يقول <em>زبائننا</em></h2><div class="divider"></div></div>
+  <div class="review-track reveal">
+    <div class="review"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“أفضل قهوة في جرش بلا منازع! الخدمة رائعة والمكان مريح جداً للدراسة والعمل. لاتيه راحة إدمان!”</p><div class="reviewer"><img src="https://i.pravatar.cc/100?img=33"><div><b>أحمد العمري</b><small>⭐ زبون دائم</small></div></div></div>
+    <div class="review"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><p>“المخبوزات طازجة يومياً والآيس كراميل لاتيه لا يُقاوم. فريق العمل ودود ومحترف جداً.”</p><div class="reviewer"><img src="https://i.pravatar.cc/100?img=5"><div><b>سارة الخالدي</b><small>⭐ تقييم جوجل</small></div></div></div>
+    <div class="review"><div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div><p>“أجواء رائعة للعائلات، وموقع ممتاز في وسط جرش. أنصح الجميع بتجربة الكابتشينو.”</p><div class="reviewer"><img src="https://i.pravatar.cc/100?img=15"><div><b>محمد جرادات</b><small>⭐ زائر</small></div></div></div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-head reveal"><h2>تعال <em>تذوق الراحة</em></h2><div class="divider"></div><p>نحن بانتظارك يومياً من 8 صباحاً حتى منتصف الليل</p></div>
+  <div class="contact-grid reveal">
+    <div class="map-card">
+      <iframe src="https://maps.google.com/maps?q=Jerash%20Jordan&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="map-info">
+        <div class="info"><i class="fa-solid fa-location-dot"></i><div><b>موقعنا - جرش</b><span>وسط البلد، شارع بغداد، بجانب الآثار - جرش، الأردن</span></div></div>
+        <div class="info"><i class="fa-solid fa-clock"></i><div><b>ساعات العمل</b><span>السبت - الخميس: 8ص - 12م<br>الجمعة: 2م - 12م</span></div></div>
+        <div class="info"><i class="fa-solid fa-phone"></i><div><b>اتصل بنا</b><span dir="ltr">+962 7 9123 4567</span></div></div>
+        <div class="info"><i class="fa-brands fa-instagram"></i><div><b>تابعنا</b><span>@raha.coffee.jo</span></div></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>أرسل لنا رسالة</h3><p>نرد عليك خلال دقائق على الواتساب</p>
+      <div class="field"><label>الاسم</label><input type="text" id="cName" placeholder="اكتب اسمك"></div>
+      <div class="field"><label>رقم الهاتف</label><input type="tel" placeholder="07xxxxxxxx" id="cPhone"></div>
+      <div class="field"><label>رسالتك</label><textarea placeholder="كيف يمكننا مساعدتك؟" id="cMsg"></textarea></div>
+      <button class="btn-send" onclick="sendContact()"><i class="fa-brands fa-whatsapp"></i> إرسال عبر واتساب</button>
+      <div class="socials">
+        <a href="https://wa.me/962791234567" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="tel:+962791234567"><i class="fa-solid fa-phone"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div><div style="display:flex;gap:10px;align-items:center;margin-bottom:12px"><div class="logo-icon" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15)"><i class="fa-solid fa-mug-hot"></i></div><h3 style="font-family:'Amiri',serif;font-size:22px">راحة كوفي شوب</h3></div><p>وجهتك الأولى للقهوة المختصة في جرش. نعدك بتجربة دافئة، نكهة لا تُنسى، ولحظات راحة تستحقها.</p><p style="margin-top:12px;color:var(--gold);font-weight:700">📍 جرش - الأردن | وسط البلد</p></div>
+    <div><h4>روابط سريعة</h4><a href="#home">الرئيسية</a><br><a href="#menu">المنيو</a><br><a href="#story">قصتنا</a><br><a href="#gallery">المعرض</a></div>
+    <div><h4>تواصل</h4><p>📞 0791234567<br>📧 hello@rahacoffee.jo<br>⏰ يومياً 8ص - 12م</p></div>
+    <div><h4>النشرة البريدية</h4><p>احصل على عروض حصرية وكوب مجاني في عيد ميلادك!</p><div style="display:flex;gap:8px;margin-top:10px"><input type="email" placeholder="بريدك الإلكتروني" style="flex:1;padding:10px 14px;border-radius:30px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-family:'Tajawal';outline:none"><button style="background:var(--gold);color:var(--dark);padding:10px 18px;border-radius:30px;font-weight:800">اشتراك</button></div></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 راحة كوفي شوب - جرش. جميع الحقوق محفوظة. صُنع بحب في الأردن 🇯🇴</span><span>تصميم UI/UX بأعلى المعايير • Raha Coffee Shop</span></div>
+</footer>
+
+<!-- Drawer -->
+<div class="overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-head"><h3><i class="fa-solid fa-bag-shopping" style="color:var(--brown)"></i> سلة الطلبات</h3><button class="close" id="closeDrawer"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total"><span>الإجمالي</span><span id="cartTotal">0.00 د.أ</span></div>
+    <button class="btn-whatsapp" onclick="checkout()"><i class="fa-brands fa-whatsapp"></i> تأكيد الطلب عبر واتساب</button>
+    <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px">التوصيل مجاني داخل جرش للطلبات فوق 10 د.أ</p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-img"><img id="mImg" src=""><button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button><span id="mCat" class="badge-cat" style="bottom:12px;top:auto;right:12px"></span></div>
+    <div class="modal-body">
+      <h3 id="mName" style="font-size:20px;font-weight:900"></h3>
+      <p id="mDesc" style="color:var(--muted);font-size:14px;margin:6px 0 14px"></p>
+      <b style="font-size:13px">اختر الحجم:</b>
+      <div class="options" id="sizeOpts">
+        <button class="opt active" data-price="0">صغير</button>
+        <button class="opt" data-price="0.75">وسط +0.75 د.أ</button>
+        <button class="opt" data-price="1.25">كبير +1.25 د.أ</button>
+      </div>
+      <b style="font-size:13px">إضافات:</b>
+      <div class="options" id="extraOpts">
+        <button class="opt" data-price="0.5">شوت إسبريسو +0.5</button>
+        <button class="opt" data-price="0.3">حليب شوفان +0.3</button>
+        <button class="opt" data-price="0">بدون سكر</button>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px">
+        <div style="font-size:22px;font-weight:900;color:var(--brown)" id="mPrice">0.00 د.أ</div>
+        <button class="btn-primary" onclick="addFromModal()">أضف للسلة <i class="fa-solid fa-bag-shopping"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox"><img id="lightImg" src=""></div>
+<div class="toasts" id="toasts"></div>
+
+<script>
+const products=[
+  {id:1,name:"لاتيه راحة المميز",desc:"إسبريسو مضاعف مع حليب مخملي وفانيليا طبيعية",price:3.5,cat:"hot",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80&auto=format&fit=crop"},
+  {id:2,name:"كابتشينو إيطالي",desc:"توازن مثالي بين الإسبريسو والرغوة الكثيفة",price:3,cat:"hot",img:"https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=600&q=80&auto=format&fit=crop"},
+  {id:3,name:"أمريكانو كلاسيك",desc:"قهوة سوداء نقية لمحبي المذاق القوي الأصيل",price:2.5,cat:"hot",img:"https://images.unsplash.com/photo-1494314671902-399b18174975?w=600&q=80&auto=format&fit=crop"},
+  {id:4,name:"موكا الشوكولاتة",desc:"مزيج ساحر من الإسبريسو والشوكولاتة البلجيكية",price:3.75,cat:"hot",img:"https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=600&q=80&auto=format&fit=crop"},
+  {id:5,name:"آيس كراميل لاتيه",desc:"الأكثر طلباً! حليب بارد مع كراميل وثلج منعش",price:4,cat:"cold",img:"https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80&auto=format&fit=crop"},
+  {id:6,name:"آيس موكا فرابيه",desc:"مثلج كريمي بالشوكولاتة والكريمة المخفوقة",price:4.25,cat:"cold",img:"https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=600&q=80&auto=format&fit=crop"},
+  {id:7,name:"آيس تي بالخوخ",desc:"شاي مثلج طبيعي بنكهة الخوخ والليمون",price:2.75,cat:"cold",img:"https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?w=600&q=80&auto=format&fit=crop"},
+  {id:8,name:"ميلك شيك فانيلا",desc:"مخفوق الحليب الكريمي مع آيس كريم فاخر",price:3.5,cat:"cold",img:"https://images.unsplash.com/photo-1579954115545-a95591f99d40?w=600&q=80&auto=format&fit=crop"},
+  {id:9,name:"كرواسون زبدة",desc:"مخبوز طازج يومياً، هش من الخارج طري من الداخل",price:1.75,cat:"bakery",img:"https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&q=80&auto=format&fit=crop"},
+  {id:10,name:"سينابون رول",desc:"لفائف القرفة الدافئة مع صوص الفانيلا",price:2.25,cat:"bakery",img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80&auto=format&fit=crop"},
+  {id:11,name:"كوكيز الشوكولاتة",desc:"كوكيز محشو بقطع الشوكولاتة الداكنة",price:1.25,cat:"bakery",img:"https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&q=80&auto=format&fit=crop"},
+  {id:12,name:"تشيز كيك لوتس",desc:"قطعة فاخرة بطبقة البسكويت المكرمل",price:3.25,cat:"bakery",img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600&q=80&auto=format&fit=crop"},
+];
+let cart=[],currentFilter='all',searchQuery='',activeProduct=null,modalBase=0,modalExtra=0;
+
+function render(){
+  const grid=document.getElementById('products');
+  let list=products.filter(p=> (currentFilter==='all'||p.cat===currentFilter) && p.name.includes(searchQuery) || p.desc.includes(searchQuery) || searchQuery==='' && (currentFilter==='all'||p.cat===currentFilter));
+  // fix filter logic for search
+  list=products.filter(p=> (currentFilter==='all'||p.cat===currentFilter) && (searchQuery==='' || p.name.includes(searchQuery) || p.desc.includes(searchQuery)));
+  grid.innerHTML=list.map(p=>{
+    const inCart=cart.find(c=>c.id===p.id);
+    return `<div class="card" onclick="openModal(${p.id})">
+      <div class="card-img"><img src="${p.img}" loading="lazy"><span class="badge-cat">${p.cat==='hot'?'ساخن':p.cat==='cold'?'بارد':'مخبوزات'}</span></div>
+      <div class="card-body">
+        <h3>${p.name}</h3><p>${p.desc}</p>
+        <div class="card-foot">
+          <div class="price">${p.price.toFixed(2)} <small>د.أ</small></div>
+          <div class="qty" onclick="event.stopPropagation()">
+            <button onclick="changeQty(${p.id},-1)"><i class="fa-solid fa-minus"></i></button>
+            <span>${inCart?inCart.qty:0}</span>
+            <button onclick="changeQty(${p.id},1)"><i class="fa-solid fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>`
+  }).join('') || `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)"><i class="fa-solid fa-mug-hot" style="font-size:32px;display:block;margin-bottom:10px;color:var(--gold)"></i>لا توجد نتائج للبحث</div>`;
+}
+function changeQty(id,delta){
+  const p=products.find(x=>x.id===id);
+  let item=cart.find(c=>c.id===id);
+  if(!item && delta>0){ cart.push({id:p.id,name:p.name,price:p.price,img:p.img,qty:1}); toast(`تمت إضافة ${p.name} للسلة`)}
+  else if(item){
+    item.qty+=delta;
+    if(item.qty<=0){ cart=cart.filter(c=>c.id!==id); toast(`تمت إزالة ${p.name}`)}
+    else if(delta>0) toast(`تمت زيادة ${p.name}`)
+  }
+  updateCart(); render();
+}
+function quickAdd(id){changeQty(id,1)}
+
+function updateCart(){
+  const count=cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent=count;
+  document.getElementById('cartCount').style.display=count?'grid':'none';
+  const total=cart.reduce((s,c)=>s+c.price*c.qty,0);
+  document.getElementById('cartTotal').textContent=total.toFixed(2)+' د.أ';
+  const box=document.getElementById('cartItems');
+  if(!cart.length) box.innerHTML=`<div class="empty"><i class="fa-solid fa-bag-shopping"></i><b>سلتك فارغة</b><p style="font-size:13px;margin-top:6px">أضف مشروباتك المفضلة واطلبها بسهولة</p><a href="#menu" onclick="closeDrawer()" style="display:inline-block;margin-top:14px;background:var(--dark);color:white;padding:10px 20px;border-radius:30px;font-weight:800">تصفح المنيو</a></div>`;
+  else box.innerHTML=cart.map(c=>`<div class="cart-item"><img src="${c.img}"><div style="flex:1"><h4>${c.name}</h4><small>${c.price.toFixed(2)} د.أ × ${c.qty}</small><div class="cart-actions"><button onclick="changeQty(${c.id},-1)"><i class="fa-solid fa-minus"></i></button><span style="font-weight:800">${c.qty}</span><button onclick="changeQty(${c.id},1)"><i class="fa-solid fa-plus"></i></button><button class="remove" onclick="cart=cart.filter(x=>x.id!==${c.id});updateCart();render();"><i class="fa-solid fa-trash-can"></i></button></div></div><b style="color:var(--brown)">${(c.price*c.qty).toFixed(2)}</b></div>`).join('');
+}
+
+function toast(msg){
+  const t=document.createElement('div'); t.className='toast'; t.innerHTML=`<i class="fa-solid fa-check"></i><span style="flex:1;font-size:13px;font-weight:700">${msg}</span>`;
+  document.getElementById('toasts').appendChild(t);
+  setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(20px)';setTimeout(()=>t.remove(),400)},2800);
+}
+
+// Drawer
+const overlay=document.getElementById('overlay'),drawer=document.getElementById('drawer');
+function openDrawer(){drawer.classList.add('open');overlay.classList.add('open')}
+function closeDrawer(){drawer.classList.remove('open');overlay.classList.remove('open')}
+document.getElementById('cartBtn').onclick=openDrawer;
+document.getElementById('closeDrawer').onclick=closeDrawer;
+overlay.onclick=()=>{closeDrawer();closeModal();closeLight()}
+
+// Filters
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active')); b.classList.add('active');
+  currentFilter=b.dataset.filter; render();
+}));
+document.getElementById('searchInput').addEventListener('input',e=>{searchQuery=e.target.value; render()})
+
+
+// Modal
+function openModal(id){
+  const p=products.find(x=>x.id===id); activeProduct=p; modalBase=p.price; modalExtra=0;
+  document.getElementById('mImg').src=p.img; document.getElementById('mName').textContent=p.name;
+  document.getElementById('mDesc').textContent=p.desc; document.getElementById('mCat').textContent=p.cat==='hot'?'ساخن':p.cat==='cold'?'بارد':'مخبوزات';
+  document.querySelectorAll('#sizeOpts .opt').forEach(o=>o.classList.remove('active')); document.querySelector('#sizeOpts .opt').classList.add('active');
+  document.querySelectorAll('#extraOpts .opt').forEach(o=>o.classList.remove('active'));
+  updateModalPrice();
+  document.getElementById('modal').classList.add('open'); overlay.classList.add('open');
+}
+function closeModal(){document.getElementById('modal').classList.remove('open'); if(!drawer.classList.contains('open')) overlay.classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal') closeModal()})
+document.querySelectorAll('#sizeOpts .opt').forEach(o=>o.addEventListener('click',()=>{
+  document.querySelectorAll('#sizeOpts .opt').forEach(x=>x.classList.remove('active')); o.classList.add('active'); updateModalPrice();
+}))
+document.querySelectorAll('#extraOpts .opt').forEach(o=>o.addEventListener('click',()=>{
+  o.classList.toggle('active'); updateModalPrice();
+}))
+function updateModalPrice(){
+  let size=parseFloat(document.querySelector('#sizeOpts .opt.active')?.dataset.price||0);
+  let extra=0; document.querySelectorAll('#extraOpts .opt.active').forEach(o=>extra+=parseFloat(o.dataset.price));
+  modalExtra=size+extra;
+  document.getElementById('mPrice').textContent=(modalBase+modalExtra).toFixed(2)+' د.أ';
+}
+function addFromModal(){
+  if(!activeProduct) return;
+  const finalPrice=modalBase+modalExtra;
+  let item=cart.find(c=>c.id===activeProduct.id);
+  if(item){ item.qty+=1; item.price=finalPrice; } else cart.push({id:activeProduct.id,name:activeProduct.name,price:finalPrice,img:activeProduct.img,qty:1});
+  // restore base price for cart logic
+  updateCart(); render(); closeModal(); toast(`تمت إضافة ${activeProduct.name}`);
+}
+
+function checkout(){
+  if(!cart.length) return toast('سلتك فارغة!');
+  let text=`مرحبا راحة كوفي شوب ☕%0Aأرغب بطلب:%0A`;
+  cart.forEach(c=> text+=`• ${c.name} ×${c.qty} = ${(c.price*c.qty).toFixed(2)} د.أ%0A`);
+  text+=`%0Aالإجمالي: ${cart.reduce((s,c)=>s+c.price*c.qty,0).toFixed(2)} د.أ%0Aالعنوان: جرش%0Aشكراً!`;
+  window.open(`https://wa.me/962791234567?text=${text}`,'_blank');
+}
+
+function sendContact(){
+  const n=document.getElementById('cName').value, ph=document.getElementById('cPhone').value, m=document.getElementById('cMsg').value;
+  if(!n||!m) return toast('يرجى تعبئة الاسم والرسالة');
+  const text=`مرحبا راحة كوفي شوب%0Aالاسم: ${n}%0Aالهاتف: ${ph}%0Aالرسالة: ${m}`;
+  window.open(`https://wa.me/962791234567?text=${encodeURIComponent(text)}`,'_blank');
+}
+
+// Gallery lightbox
+document.querySelectorAll('.gallery-item').forEach(el=>el.addEventListener('click',()=>{
+  document.getElementById('lightImg').src=el.dataset.src;
+  document.getElementById('lightbox').classList.add('open'); overlay.classList.add('open');
+}))
+function closeLight(){document.getElementById('lightbox').classList.remove('open'); if(!drawer.classList.contains('open') && !document.getElementById('modal').classList.contains('open')) overlay.classList.remove('open')}
+document.getElementById('lightbox').onclick=closeLight;
+
+// Header scroll + reveal + counters
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{
+  header.classList.toggle('scrolled',scrollY>20);
+  document.querySelectorAll('.reveal').forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight*0.88) el.classList.add('in');
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    const sec=document.querySelector(a.getAttribute('href')); if(sec){
+      const top=sec.offsetTop-120; if(scrollY>=top && scrollY<top+sec.offsetHeight) {
+        document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active')); a.classList.add('active');
+      }
+    }
+  })
+})
+// counters
+let counted=false;
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting && !counted){
+      counted=true;
+      document.querySelectorAll('[data-count]').forEach(b=>{
+        const target=+b.dataset.count; let cur=0; const step=Math.ceil(target/40);
+        const t=setInterval(()=>{cur+=step; if(cur>=target){cur=target; clearInterval(t)} b.textContent=cur+'+'},30);
+      })
+    }
+  })
+},{threshold:0.5});
+observer.observe(document.querySelector('.counters'));
+
+// mobile menu
+document.getElementById('menuBtn').onclick=()=>{
+  const links=document.querySelector('.nav-links');
+  links.style.display=links.style.display==='flex'?'none':'flex';
+  if(links.style.display==='flex'){
+    links.style.position='absolute'; links.style.top='70px'; links.style.right='16px'; links.style.background='white'; links.style.flexDirection='column'; links.style.padding='18px'; links.style.borderRadius='16px'; links.style.boxShadow='var(--shadow-lg)'; links.style.zIndex='999';
+  }
+}
+
+// init
+render(); updateCart();
+window.dispatchEvent(new Event('scroll'));
+</script>
+</body>
+</html>
